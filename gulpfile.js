@@ -23,13 +23,13 @@ gulp.task('watch', (done) => {
       .exclude(config.exclude || ['.rsync-tool.json', '.git'])
       .source(config.source || process.cwd() + '/')
       .destination(config.destination);
-    console.log(rsync.command());
+
     rsync.execute(function(err, code, cmd) {
       if (err) {
-        console.log('[ERROR]', err.message)
+        gutil.log('[ERROR]', err.message)
       }
-      console.log('[CODE]', code);
-      console.log('[COMMAND]', cmd);
+      gutil.log('[CODE]', code);
+      gutil.log('[COMMAND]', cmd);
     });
   });
 });
