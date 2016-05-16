@@ -1,0 +1,24 @@
+{
+  "name": "rsync-tools",
+  "version": "1.0.0",
+  "description": "rsync tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp",
+    "rsync"
+  ],
+  "author": "umatoma",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.5",
+    "rsync": "^0.4.0"
+  },
+  "bin": {
+    "rst": "bin/rst"
+  }
+}
