@@ -3,7 +3,7 @@ rsync tools
 
 # Install
 ```bash
-$ npm intall -g https://github.com/umatoma/rsync-tools.git
+$ npm install -g https://github.com/umatoma/rsync-tools.git
 ```
 
 # Usage
