@@ -11,6 +11,10 @@ gulp.task('watch', (done) => {
   let config_path = path.resolve(process.cwd(), '.rsync-tool.json');
   let config = JSON.parse(fs.readFileSync(config_path));
   let files = ['**/*', '!.rsync-tool.json', '!.git'];
+  let exclude = config.exclude || [];
+
+  // add exclude files
+  files = files.concat(exclude.map( v => '!' + v ));
 
   return watch(files, (vinyl) => {
     gutil.log('File ' + vinyl.path + ' was ' + vinyl.event + ', running tasks...');
@@ -20,7 +24,7 @@ gulp.task('watch', (done) => {
       .flags(config.flags || 'azr')
       .set('progress')
       .delete()
-      .exclude(config.exclude || ['.rsync-tool.json', '.git'])
+      .exclude(exclude)
       .source(config.source || process.cwd() + '/')
       .destination(config.destination);
 
