@@ -8,25 +8,61 @@ const gutil = require('gulp-util');
 const Rsync = require('rsync');
 const watch = require('gulp-watch');
 
+// remove --gulpfile and --cwd options
+const argv = require('yargs')(process.argv.slice(0, -4))
+  .usage('Usage: $ rst <command> [options]')
+  .command('watch', 'Watch files and exec rsync command')
+  .command('sync-local', 'Synchronize the local to the server')
+  .option('debug', {
+    describe: 'Debug mode',
+    type: 'boolean'
+  })
+  .strict()
+  .help()
+  .locale('en')
+  .argv;
+
+const DEBUG_MODE = (argv.debug === true);
+
 /**
  * Watch files and exec rsync command
  *
- * Usage:
+ * Command:
  *   $ rst watch
  */
 gulp.task('watch', (done) => {
   let config = getConfigFromFile();
 
-  watch(config.files, (vinyl) => {
+  return watch(config.files, (vinyl) => {
     gutil.log('File ' + vinyl.path + ' was ' + vinyl.event + ', running tasks...');
 
-    execRsync(config, (err, code, cmd) => {
+    return execRsync(config, (err, code, cmd) => {
       if (err) {
         gutil.log('[ERROR]', err.message)
       }
       gutil.log('[CODE]', code);
       gutil.log('[COMMAND]', cmd);
     });
+  });
+});
+
+/**
+ * Synchronize the local to the server
+ *
+ * Command:
+ *   $ rst sync-local
+ */
+gulp.task('sync-local', (done) => {
+  let config = getConfigFromFile();
+
+  return execRsync(config, (err, code, cmd) => {
+    if (err) {
+      gutil.log('[ERROR]', err.message)
+    }
+    gutil.log('[CODE]', code);
+    gutil.log('[COMMAND]', cmd);
+
+    done();
   });
 });
 
@@ -80,5 +116,16 @@ function execRsync(config, callback) {
     .source(config.source)
     .destination(config.destination);
 
-  rsync.execute(callback);
+  return rsync.execute(
+    callback,
+    (data) => {
+      if (DEBUG_MODE) {
+        console.log(data.toString());
+      }
+    },
+    (data) => {
+      if (DEBUG_MODE) {
+        console.log(data.toString());
+      }
+    });
 }
