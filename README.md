@@ -13,13 +13,20 @@ $ npm install -g https://github.com/umatoma/rsync-tools.git
 # Usage
 ```bash
 $ rst --help
-Usage: $ rst <command> [options]
+rsync-tools (v1.0.2)
+
+Usage:
+$ rst <command> [options]
 
 Commands:
   watch       Watch files and exec rsync command
   sync-local  Synchronize the local to the server
 
 Options:
-  --debug  Debug mode  [boolean]
-  --help   Show help  [boolean]
+  --debug    Debug mode                                                [boolean]
+  --help     Show help                                                 [boolean]
+  --version  Show version number                                       [boolean]
+
+Report bugs to github issue.
+github: https://github.com/umatoma/rsync-tools
 ```
