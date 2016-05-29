@@ -16,7 +16,7 @@ args = args.concat(['--cwd', cwd]);
 
 /**
  * exec gulp task
- * $ /path/to/node /path/to/gulp-rsync-tools/node_modules/.bin/gulp <command> --gulpfile <gulpfile> --cwd <cwd
+ * $ /path/to/node /path/to/gulp-rsync-tools/node_modules/.bin/gulp <command> --gulpfile <gulpfile> --cwd <cwd>
  */
 let call = spawn(node, args);
 console.log('[exec]', args.join(' '));
