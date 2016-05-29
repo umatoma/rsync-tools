@@ -30,3 +30,15 @@ Options:
 Report bugs to github issue.
 github: https://github.com/umatoma/rsync-tools
 ```
+
+# Config File
+.rsync-tool.json
+```javascript
+{
+  "destination": "umatoma@target.umatoma.net:/path/to/project/",
+  "source": "/path/to/project/", // default: cwd
+  "exclude": ["secret.key", "tmp/"] // default: []
+  "shell": "ssh", // default: ssh
+  "flags": "azr" // default: azr
+}
+```
