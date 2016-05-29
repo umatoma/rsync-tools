@@ -9,19 +9,7 @@ const Rsync = require('rsync');
 const watch = require('gulp-watch');
 
 // remove --gulpfile and --cwd options
-const argv = require('yargs')(process.argv.slice(0, -4))
-  .usage('Usage: $ rst <command> [options]')
-  .command('watch', 'Watch files and exec rsync command')
-  .command('sync-local', 'Synchronize the local to the server')
-  .option('debug', {
-    describe: 'Debug mode',
-    type: 'boolean'
-  })
-  .strict()
-  .help()
-  .locale('en')
-  .argv;
-
+const argv = require('./lib/cmd-args')(process.argv.slice(0, -4));
 const DEBUG_MODE = (argv.debug === true);
 
 /**

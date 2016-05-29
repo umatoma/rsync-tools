@@ -5,21 +5,22 @@ const path = require('path');
 const spawn = require('child_process').spawn;
 
 let node = process.argv[0];
-let args = process.argv.slice(2);
+let gulp_args = process.argv.slice(2);
+let argv = require('../lib/cmd-args')(process.argv);
 let gulp = path.resolve(__dirname, '..', 'node_modules', '.bin', 'gulp');
 let gulpfile = path.resolve(__dirname, '..', 'gulpfile.js');
 let cwd = process.cwd();
 
-args.unshift(gulp);
-args = args.concat(['--gulpfile', gulpfile]);
-args = args.concat(['--cwd', cwd]);
+gulp_args.unshift(gulp);
+gulp_args = gulp_args.concat(['--gulpfile', gulpfile]);
+gulp_args = gulp_args.concat(['--cwd', cwd]);
 
 /**
  * exec gulp task
  * $ /path/to/node /path/to/gulp-rsync-tools/node_modules/.bin/gulp <command> --gulpfile <gulpfile> --cwd <cwd>
  */
-let call = spawn(node, args);
-console.log('[exec]', args.join(' '));
+let call = spawn(node, gulp_args);
+console.log('[exec]', gulp_args.join(' '));
 
 call.stdout.on('data', (data) => {
   process.stdout.write(data);
