@@ -19,8 +19,9 @@ Usage:
 $ rst <command> [options]
 
 Commands:
-  watch       Watch files and exec rsync command
-  sync-local  Synchronize the local to the server
+  watch        Watch files and exec rsync command
+  sync-local   Synchronize the local to the server
+  sync-remote  Synchronize the server to the local
 
 Options:
   --debug    Debug mode                                                [boolean]
