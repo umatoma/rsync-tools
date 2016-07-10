@@ -55,6 +55,30 @@ gulp.task('sync-local', (done) => {
 });
 
 /**
+ * Synchronize the server to the local
+ *
+ * Command:
+ *   $ rst sync-remote
+ */
+gulp.task('sync-remote', (done) => {
+  let config = getConfigFromFile();
+  let source = _.clone(config.destination);
+  let destination = _.clone(config.source);
+  config.source = source;
+  config.destination = destination;
+
+  return execRsync(config, (err, code, cmd) => {
+    if (err) {
+      gutil.log('[ERROR]', err.message)
+    }
+    gutil.log('[CODE]', code);
+    gutil.log('[COMMAND]', cmd);
+
+    done();
+  });
+});
+
+/**
  * Get config from json file.
  *
  * @return {object} - Config object
