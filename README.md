@@ -13,15 +13,18 @@ $ npm install -g https://github.com/umatoma/rsync-tools.git
 # Usage
 ```bash
 $ rst --help
-rsync-tools (v1.0.2)
+rsync-tools (v1.2.0)
 
 Usage:
 $ rst <command> [options]
 
 Commands:
-  watch        Watch files and exec rsync command
-  sync-local   Synchronize the local to the server
-  sync-remote  Synchronize the server to the local
+  watch   Watch files and exec rsync command
+  local   Synchronize the local to the server
+  remote  Synchronize the server to the local
+  w       watch command alias
+  l       local command alias
+  r       remote command alias
 
 Options:
   --debug    Debug mode                                                [boolean]
