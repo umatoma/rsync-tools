@@ -83,6 +83,7 @@ function execRsync(config, callback) {
  * Command:
  *   $ rst watch
  */
+gulp.task('w', ['watch']);
 gulp.task('watch', () => {
   const config = getConfigFromFile();
 
@@ -103,9 +104,10 @@ gulp.task('watch', () => {
  * Synchronize the local to the server
  *
  * Command:
- *   $ rst sync-local
+ *   $ rst local
  */
-gulp.task('sync-local', (done) => {
+gulp.task('l', ['local']);
+gulp.task('local', (done) => {
   const config = getConfigFromFile();
 
   return execRsync(config, (err, code, cmd) => {
@@ -123,9 +125,10 @@ gulp.task('sync-local', (done) => {
  * Synchronize the server to the local
  *
  * Command:
- *   $ rst sync-remote
+ *   $ rst remote
  */
-gulp.task('sync-remote', (done) => {
+gulp.task('r', ['remote']);
+gulp.task('remote', (done) => {
   const config = getConfigFromFile();
   const source = _.clone(config.destination);
   const destination = _.clone(config.source);
