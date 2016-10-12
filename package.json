@@ -15,10 +15,10 @@
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.7",
-    "gulp-watch": "^4.3.5",
-    "lodash": "^4.13.1",
+    "gulp-watch": "^4.3.10",
+    "lodash": "^4.16.4",
     "rsync": "^0.5.0",
-    "yargs": "^4.7.1"
+    "yargs": "^4.8.1"
   },
   "bin": {
     "rst": "bin/rst"
