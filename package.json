@@ -1,6 +1,6 @@
 {
   "name": "rsync-tools",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "rsync tools",
   "main": "index.js",
   "scripts": {
@@ -17,10 +17,15 @@
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
     "lodash": "^4.13.1",
-    "rsync": "^0.4.0",
+    "rsync": "^0.5.0",
     "yargs": "^4.7.1"
   },
   "bin": {
     "rst": "bin/rst"
+  },
+  "devDependencies": {
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb-base": "^8.0.0",
+    "eslint-plugin-import": "^1.16.0"
   }
 }
