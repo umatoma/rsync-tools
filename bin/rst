@@ -3,7 +3,7 @@
 'use strict';
 
 require('../lib/cmd-args')(process.argv);
-
+const _ = require('lodash');
 const path = require('path');
 const spawn = require('child_process').spawn;
 
@@ -11,11 +11,12 @@ const gulp = path.resolve(__dirname, '..', 'node_modules', '.bin', 'gulp');
 const gulpfile = path.resolve(__dirname, '..', 'gulpfile.js');
 const cwd = process.cwd();
 const node = process.argv[0];
-
-let gulpArgs = process.argv.slice(2);
-gulpArgs.unshift(gulp);
-gulpArgs = gulpArgs.concat(['--gulpfile', gulpfile]);
-gulpArgs = gulpArgs.concat(['--cwd', cwd]);
+const gulpArgs = _.concat(
+  [gulp],
+  process.argv.slice(2),
+  ['--gulpfile', gulpfile],
+  ['--cwd', cwd]
+);
 
 /**
  * exec gulp task
