@@ -58,7 +58,7 @@ function execRsync(config, callback) {
     .shell(config.shell)
     .flags(config.flags)
     .set('progress')
-    .deconste()
+    .delete()
     .exclude(config.exclude)
     .source(config.source)
     .destination(config.destination);
